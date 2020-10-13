@@ -14,8 +14,7 @@ class Game:
     def __init__(self, strategies, iterations, infinite=False,
                  debug_level=0, time_allowance=10):
         # Create player from strategy
-        self._players = tuple(s(self, i)
-                              for i, s in enumerate(strategies))
+        self._players = tuple(s(self, i) for i, s in enumerate(strategies))
 
         # Record game parameters
         self._iterations = iterations
@@ -34,7 +33,8 @@ class Game:
             {'intention': [], 'response': []}
         )
 
-        # Setup time elapsed alarm
+        # Setup timing system
+        self._time_allowance = time_allowance
         signal.signal(signal.SIGALRM, lambda s, f: Game.raiseTimeLimitError())
 
         self._simulate()
@@ -92,7 +92,7 @@ class Game:
                 )
 
         # Only update response honesty after second move
-        if not self._turn:
+        if self._turn < 2:
             return
 
         # Honesty of players' responses
@@ -108,9 +108,9 @@ class Game:
                 )
 
     def _parse_attribute(self, attr, id_, type_):
-        if id_ and type_:
+        if id_ is not None and type_:
             return getattr(self, attr)[id_][type_]
-        elif id_:
+        elif id_ is not None:
             return getattr(self, attr)[id_]
         elif type_:
             return tuple(getattr(self, attr)[i][type_] for i in (0, 1))
@@ -120,7 +120,7 @@ class Game:
     # ~~~ GETTER METHODS FOR PRIVATE ATTRIBUTES ~~~
 
     def get_iterations(self):
-        return None if self.infinite else self._iterations
+        return None if self._infinite else self._iterations
 
     def get_infinite(self):
         return self._infinite
@@ -135,7 +135,7 @@ class Game:
         return self._parse_attribute('_history', id_, type_)
 
     def get_honesty(self, id_=None, type_=None):
-        return self._parse_attribute('_honesy', id_, type_)
+        return self._parse_attribute('_honesty', id_, type_)
 
     # ~~~ STATIC METHODS FOR VALIDATION AND ERROR HANDLING ~~~
 
@@ -168,7 +168,7 @@ class BaseStrategy(ABC):
         # Assign to game and record ID
         self.game = game
         self.my_id = id_
-        self.op_id = id_ ^ 0
+        self.op_id = id_ ^ 1
 
     @abstractmethod
     def state_action(self):
