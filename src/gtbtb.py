@@ -70,8 +70,8 @@ class Game:
             signal.alarm(self._t[i])
             start = time.time()
             try:
-                res = getattr(self._players[i], f'state_{type_}')
-                if not getattr(self, f'_validate_{type_}'):
+                res = getattr(self._players[i], f'state_{type_}')()
+                if not getattr(self, f'validate_{type_}')(res):
                     raise InvalidResponseError
                 self._history[i][type_].append(res)
             except Exception:
