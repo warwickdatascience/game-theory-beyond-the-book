@@ -17,7 +17,7 @@ class Game:
     def __init__(self, strategies, iterations, infinite=False,
                  debug_level=0, time_allowance=10):
         # Create player from strategy
-        self._players = tuple(s.__new__(self, i)
+        self._players = tuple(s(self, i)
                               for i, s in enumerate(strategies))
 
         # Record game parameters
