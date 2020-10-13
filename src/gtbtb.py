@@ -21,9 +21,9 @@ class Game:
         self._infinite = infinite
 
         # Initialise game state
-        self._scores = (0, 0)
+        self._scores = [0, 0]
         self._turn = 0
-        self._dq = (False, False)
+        self._dq = [False, False]
         self._history = (
             {'action': [], 'intention': [], 'response': []},
             {'action': [], 'intention': [], 'response': []}
@@ -43,14 +43,14 @@ class Game:
         while self._turn < self._iterations:
             self._turn += 1
             # Make requests to players
-            self._t = tuple(self.time_allowance for __ in range(2))
+            self._t = [self._time_allowance for __ in range(2)]
             try:
                 self._request('intention')
                 self._request('response')
                 self._request('action')
             except DisqualificationError:
-                self._scores = tuple(100 * self.iterations * (not dq)
-                                     for dq in self._dq)
+                self._scores = [100 * self._iterations * (not dq)
+                                for dq in self._dq]
                 break
 
             # Update helper properties
