@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import math
 import signal
 import time
 
@@ -81,7 +82,7 @@ class Game:
                 self._dq[i]
                 raise DisqualificationError
             signal.alarm(0)
-            self._t[i] -= (time.time() - start)
+            self._t[i] -= math.floor(time.time() - start)
 
     def _update_honesty(self):
         # Honesty of players' intentions
