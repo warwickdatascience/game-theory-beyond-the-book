@@ -75,7 +75,9 @@ class Game:
                     raise InvalidResponseError
                 self._history[i][type_].append(res)
             except Exception:
-                self._dq[i]
+                self._dq[i] = True
+                print(f"Player {i} was disqualified")
+                signal.alarm(0)
                 raise DisqualificationError
             signal.alarm(0)
             self._t[i] -= math.floor(time.time() - start)
