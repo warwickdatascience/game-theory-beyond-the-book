@@ -3,10 +3,6 @@ import math
 import signal
 import time
 
-# TODO: Document rules:
-# - No accessing private methods
-# - No try-except clauses
-
 # TODO: Explain module structure:
 # - IDs only affect DQ order
 
