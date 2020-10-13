@@ -130,6 +130,10 @@ class Game:
     def get_scores(self, id_=None):
         return self._scores[id_] if id_ else self._scores
 
+    def get_results(self):
+        return {i: round(s / self._iterations, 2)
+                for i, s in enumerate(self._scores)}
+
     def get_turn(self):
         return self._turn
 
