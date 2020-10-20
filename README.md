@@ -2,7 +2,7 @@
 
 ## Introductions
 
-This repository accompanies WDSS/EconSoc's talk [Game Theory Beyond the Book](https://www.youtube.com/watch?v=Q9di7mvPsnw). We would strongly recommend you watching this first.
+This repository accompanies WDSS/EconSoc's talk Game Theory Beyond the Book ([Part 1]((https://www.youtube.com/watch?v=Q9di7mvPsnw))/[Part 2](https://www.youtube.com/watch?v=rHY4dJY01wc)). We would strongly recommend you watching this first.
 
 ## Example Notebooks
 
