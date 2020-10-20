@@ -88,9 +88,9 @@ class Game:
             if self._history[i]['intention'][-1] is None:
                 self._honesty[i]['intention'].append(None)
             else:
-                self.honesty[i]['intention'].append(
-                    int(self.history[i]['action'][-1] ==
-                        self.history[i]['intention'][-1])
+                self._honesty[i]['intention'].append(
+                    int(self._history[i]['action'][-1] ==
+                        self._history[i]['intention'][-1])
                 )
 
         # Only update response honesty after second move
