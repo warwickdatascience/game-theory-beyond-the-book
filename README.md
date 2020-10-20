@@ -11,6 +11,9 @@ We will gradually be releasing example notebooks showcasing how you can write ga
 - [Basic Strategies](https://colab.research.google.com/github/warwickdatascience/game-theory-beyond-the-book/blob/main/examples/basic.ipynb)
 - [Submissions Rules](https://colab.research.google.com/github/warwickdatascience/game-theory-beyond-the-book/blob/main/examples/rules.ipynb)
 - [Managing Game/Player State](https://colab.research.google.com/github/warwickdatascience/game-theory-beyond-the-book/blob/main/examples/state.ipynb)
+- [Broadcasting Strategies](https://colab.research.google.com/github/warwickdatascience/game-theory-beyond-the-book/blob/main/examples/broadcasting.ipynb)
+- Developing Trust (Coming Soon)
+- Finite and Infinite Games (Coming Soon)
 
 These all run in Google Colab so you don't need to install anything.
 
